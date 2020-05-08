@@ -1,4 +1,4 @@
-package spbstu.project.varann;
+package spbstu.project.varann.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
