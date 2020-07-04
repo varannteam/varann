@@ -22,4 +22,6 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: varann/varann
+          labels: name=varann-, ssh=org.opencontainers.image.revision
+          add_git_labels: true
           tags: latest
