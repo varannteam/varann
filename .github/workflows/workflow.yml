@@ -1,0 +1,11 @@
+name: Varann workflow
+on: [push]
+jobs:
+  build:
+    name: Building
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Build with Gradle
+        run: gradle build
