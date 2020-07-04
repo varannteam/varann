@@ -28,7 +28,12 @@ public class VariationRepositoryTest {
         entityManager.persist(variationFirst);
         entityManager.flush();
 
-        Variation variationFound = variationRepository.findByChromAndPosAndRefAndAlt(variationFirst.getChrom(), variationFirst.getPos(), variationFirst.getRef(), variationFirst.getAlt());
+        Variation variationFound = variationRepository.findByChromAndPosAndRefAndAlt(
+                variationFirst.getChrom(),
+                variationFirst.getPos(),
+                variationFirst.getRef(),
+                variationFirst.getAlt()
+        );
 
         assertThat(variationFound.getChrom())
                 .isEqualTo(variationFirst.getChrom());
