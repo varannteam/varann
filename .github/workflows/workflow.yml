@@ -5,6 +5,15 @@ jobs:
     name: Building
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: sql12345
+        ports:
+          - 5432:5432
+
     steps:
       - uses: actions/checkout@v2
 
@@ -12,9 +21,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: '11'
-
-      - name: Setup PostgreSQL
-        uses: Harmon758/postgresql-action@v1.0.0
 
       - name: Build with Gradle
         run: gradle build
