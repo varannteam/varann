@@ -7,14 +7,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        -
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
         with:
           java-version: '11'
 
-      - uses: harmon758/postgresql-action@v1
-        with:
-          postgresql version: '11'  # See https://hub.docker.com/_/postgres for available versions
+      - name: Setup PostgreSQL
+        uses: Harmon758/postgresql-action@v1.0.0
 
       - name: Build with Gradle
         run: gradle build
