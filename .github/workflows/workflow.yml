@@ -29,6 +29,7 @@ jobs:
 
       - name: Build with Gradle
         run: gradle build
+
         env:
           POSTGRES_PASSWORD: postgres
           POSTGRES_USER: postgres
