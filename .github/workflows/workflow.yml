@@ -1,14 +1,29 @@
 name: Varann workflow
 on: [push]
+
+
 jobs:
   build:
     name: Building
-
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
 
     steps:
       - uses: actions/checkout@v2
-      - name: Set up JDK
+
+      - name: Set up JDK 1.8
 
         uses: actions/setup-java@v1
         with:
@@ -16,6 +31,12 @@ jobs:
 
       - name: Build with Gradle
         run: gradle build
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_DB: postgres
+          POSTGRES_HOST: localhost
+
 
       - name: Build docker image
         uses: docker/build-push-action@v1
@@ -23,4 +44,5 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: varann/varann
+
           tag_with_sha: true
