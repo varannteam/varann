@@ -5,9 +5,15 @@ services:
     env_file:
       - database.env
     ports:
-      - 5431:5432
+      - 5432:5432
 
   app:
     build: .
     ports:
       - 8080:8080
+    env_file:
+      - app.env
+
+    restart: on-failure
+    depends_on:
+      - database
