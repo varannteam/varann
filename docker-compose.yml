@@ -8,11 +8,9 @@ services:
       - 5432:5432
 
   app:
-    build: .
+    image: "varann/varann:sha-51b1429"
     ports:
       - 8080:8080
-    env_file:
-      - app.env
 
     restart: on-failure
     depends_on:
