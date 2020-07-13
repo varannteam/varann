@@ -53,4 +53,4 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "varann-app"
           heroku_email: "step.ponomarev@gmail.com"
-          procfile: "web: ls"
+          procfile: "web: docker-compose up"
