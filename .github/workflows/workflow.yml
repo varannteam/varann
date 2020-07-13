@@ -44,10 +44,14 @@ jobs:
           repository: varann/varann
           tag_with_sha: true
 
+
+      - run: |
+          git config --global user.email "step.ponomarev@gmail.com"
+          git config --global user.name "Stepan"
       - uses: akhileshns/heroku-deploy@master
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "varann-app"
           heroku_email: "step.ponomarev@gmail.com"
           docker_heroku_process_type: "worker"
-          procfile: "web: docker-compose up"
+          procfile: "worker: docker-compose up"
