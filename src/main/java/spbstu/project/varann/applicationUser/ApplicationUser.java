@@ -1,6 +1,7 @@
 package spbstu.project.varann.applicationUser;
 
 import lombok.Data;
+import org.springframework.aop.scope.ScopedProxyUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

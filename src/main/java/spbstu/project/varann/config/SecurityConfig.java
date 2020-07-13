@@ -3,6 +3,7 @@ package spbstu.project.varann.config;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -16,7 +17,6 @@ import spbstu.project.varann.service.ApplicationUserService;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final PasswordEncoder passwordEncoder;
     private final ApplicationUserService userService;
@@ -26,6 +26,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/static/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/variation").hasAuthority("POST")
+                .antMatchers(HttpMethod.GET, "/variation").hasAuthority("ANNOTATE")
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic()

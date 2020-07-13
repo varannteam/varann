@@ -6,7 +6,7 @@ public enum ApplicationAuthority implements GrantedAuthority {
     POST("POST"),
     ANNOTATE("ANNOTATE");
 
-    private String  authority;
+    private final String authority;
 
     private ApplicationAuthority(String authority) {
         this.authority = authority;
