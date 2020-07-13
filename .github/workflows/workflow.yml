@@ -26,6 +26,8 @@ jobs:
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: varann-app
+          heroku_email: step.ponomarev@gmail.com
+
 
       - name: Set up JDK 1.8
 
@@ -49,6 +51,4 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: varann/varann
-          dontuseforce: true
-
           tag_with_sha: true
