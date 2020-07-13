@@ -27,7 +27,7 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: varann-app
           heroku_email: step.ponomarev@gmail.com
-          buildpack: https://github.com/heroku/heroku-buildpack-gradle
+          buildpack: https://github.com/heroku/heroku-buildpack-gradle.git
 
       - name: Set up JDK 1.8
 
