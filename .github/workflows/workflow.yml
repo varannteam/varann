@@ -28,6 +28,7 @@ jobs:
           heroku_app_name: varann-app
           heroku_email: step.ponomarev@gmail.com
           usedocker: true
+          dontuseforce: true
 
 
       - name: Set up JDK 1.8
