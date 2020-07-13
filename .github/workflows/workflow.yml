@@ -28,12 +28,12 @@ jobs:
           heroku_app_name: varann-app
           heroku_email: step.ponomarev@gmail.com
           buildpack: https://github.com/heroku/heroku-buildpack-gradle.git
+          usedocker: true
 
       - name: Set up JDK 1.8
-
         uses: actions/setup-java@v1
         with:
-          java-version: '8'
+          java-version: '11'
 
       - name: Build with Gradle
         run: gradle build
