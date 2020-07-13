@@ -27,6 +27,11 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: varann-app
           heroku_email: step.ponomarev@gmail.com
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_DB: postgres
+          POSTGRES_HOST: localhost
 
       - name: Set up JDK 1.8
 
