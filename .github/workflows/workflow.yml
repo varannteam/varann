@@ -50,4 +50,4 @@ jobs:
           heroku_app_name: "varann-app"
           heroku_email: "step.ponomarev@gmail.com"
           docker_heroku_process_type: "worker"
-          buildpack: "https://github.com/dockhero/heroku-buildpack-docker-compose.git"
+          procfile: "worker: docker-compose up"
