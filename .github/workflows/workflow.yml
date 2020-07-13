@@ -27,6 +27,7 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: varann-app
           heroku_email: step.ponomarev@gmail.com
+          usedocker: true
 
 
       - name: Set up JDK 1.8
