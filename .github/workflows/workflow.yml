@@ -1,7 +1,6 @@
 name: Varann workflow
 on: [push]
 
-
 jobs:
   build:
     name: Building
@@ -22,6 +21,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        -
+      - uses: akhileshns/heroku-deploy@v3.2.6
+          with:
+            heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+            heroku_app_name: "varann-app"
+           #heroku_email: "YOUR EMAIL"
+            usedocker: true
 
       - name: Set up JDK 1.8
 
