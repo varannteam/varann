@@ -1,6 +1,7 @@
 package spbstu.project.varann.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import spbstu.project.varann.domain.Variation;
 import spbstu.project.varann.domain.VariationID;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ public class VariationController {
     private final VariationService variationService;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('POST')")
     public void storeVariation(@RequestParam("file") MultipartFile file) {
         try {
             variationService.store(file.getInputStream());
@@ -25,6 +27,7 @@ public class VariationController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ANNOTATE')")
     public Variation annotateVariation(@RequestBody VariationID variationID) {
         return variationService.annotate(variationID);
     }

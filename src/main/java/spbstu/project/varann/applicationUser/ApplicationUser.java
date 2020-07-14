@@ -1,14 +1,23 @@
 package spbstu.project.varann.applicationUser;
 
 import lombok.Data;
-import org.springframework.aop.scope.ScopedProxyUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
+import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.ElementCollection;
+
+
 import java.util.Set;
+import java.util.Collection;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Data
 @Entity
@@ -28,11 +37,11 @@ public class ApplicationUser implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        var authorities = new HashSet<GrantedAuthority>();
-
-        roles.forEach(role -> authorities.addAll(role.getAuthorities()));
-
-        return authorities;
+        return roles.stream()
+                .map(Role::getAuthorities)
+                .map(Set::stream)
+                .flatMap(Function.identity())
+                .collect(Collectors.toSet());
     }
 
     @Override
