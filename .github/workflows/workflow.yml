@@ -45,8 +45,7 @@ jobs:
           tag_with_sha: true
 
 
-      name: Build, Push and Deploy to Heroku #set the whatever name you want to this step
-        id: heroku
+      - name: Build, Push and Deploy to Heroku #set the whatever name you want to this step
         uses: snithyanantham/docker-compose-multiple-apps-heroku-deploy@v1.0  # use the latest version of the action
         with:
           email: step.ponomarev@gmail.com
