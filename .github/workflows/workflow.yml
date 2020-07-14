@@ -44,11 +44,12 @@ jobs:
           repository: varann/varann
           tag_with_sha: true
 
-
-      - name: Build, Push and Deploy to Heroku
-        uses: snithyanantham/docker-compose-multiple-apps-heroku-deploy@v1.0
+      - run: |
+          git config --global user.email "step.ponomarev@gmail.com"
+          git config --global user.name "step-ponomarev"
+          git add -A
+      - uses: akhileshns/heroku-deploy@v3.2.6
         with:
-          email: step.ponomarev@gmail.com
-          api_key: ${{ secrets.HEROKU_API_KEY }}
-          docker_compose_file: './docker-compose.yml'
-          heroku_apps: '[{"imagename":"postgres","appname":"database","apptype":"worker"},{"imagename":"varann/varann","appname":"app","apptype":"app"}]'
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "varann-app"
+          heroku_email: "step.ponomarev@gmail.com"
