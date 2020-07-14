@@ -51,4 +51,3 @@ jobs:
           email: step.ponomarev@gmail.com
           api_key: ${{ secrets.HEROKU_API_KEY }}
           docker_compose_file: './docker-compose.yml'
-          heroku_apps: '[{"imagename":"app1","appname":"app1","apptype":"web"},{"imagename":"app2","appname":"app2","apptype":"web"}]'
