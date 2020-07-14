@@ -52,18 +52,3 @@ jobs:
           api_key: ${{ secrets.HEROKU_API_KEY }}
           docker_compose_file: './docker-compose.yml'
           heroku_apps: '[{"imagename":"app1","appname":"app1","apptype":"web"},{"imagename":"app2","appname":"app2","apptype":"web"}
-
-#      - run: |
-#          git config --global user.email "step.ponomarev@gmail.com"
-#          git config --global user.name "step-ponomarev"
-#          git add -A
-#      - uses: akhileshns/heroku-deploy@v3.2.6
-#        with:
-#          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-#          heroku_app_name: "varann-app"
-#          heroku_email: "step.ponomarev@gmail.com"
-#          buildpack: "https://github.com/dockhero/heroku-buildpack-docker-compose.git"
-#          procfile: "web: curl -L 'https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)' -o docker-compose & chmod +x ./docker-compose & ./docker-compose up"
-
-
-
