@@ -35,15 +35,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(this.authenticationProvider());
+        auth.authenticationProvider(authenticationProvider());
     }
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
         var provider = new DaoAuthenticationProvider();
 
-        provider.setPasswordEncoder(this.passwordEncoder);
-        provider.setUserDetailsService(this.userService);
+        provider.setPasswordEncoder(passwordEncoder);
+        provider.setUserDetailsService(userService);
 
         return provider;
     }
