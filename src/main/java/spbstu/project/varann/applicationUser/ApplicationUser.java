@@ -39,8 +39,7 @@ public class ApplicationUser implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles.stream()
                 .map(Role::getAuthorities)
-                .map(Set::stream)
-                .flatMap(Function.identity())
+                .flatMap(Set::stream)
                 .collect(Collectors.toSet());
     }
 
