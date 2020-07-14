@@ -54,7 +54,7 @@ jobs:
           heroku_app_name: "varann-app"
           heroku_email: "step.ponomarev@gmail.com"
           buildpack: "https://github.com/dockhero/heroku-buildpack-docker-compose.git"
-          procfile: "web: curl -L 'https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)' -o docker-compose & chmod +x ./docker-compose & docker-compose up"
+          procfile: "web: curl -L 'https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)' -o docker-compose & chmod +x ./docker-compose & ./docker-compose up"
 
 
 
