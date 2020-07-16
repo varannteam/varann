@@ -10,7 +10,7 @@ services:
       - 5432:5432
 
   app:
-    image: "varann/varann:sha-76925f6"
+    image: "varann/varann:sha-dfb3fc0"
     ports:
       - 8080:8080
     environment:
