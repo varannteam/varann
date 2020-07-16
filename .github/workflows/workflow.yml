@@ -1,8 +1,5 @@
 name: Varann workflow
-on:
-  push:
-    branches:
-      - master
+on: [push]
 
 jobs:
   build:
