@@ -44,10 +44,9 @@ jobs:
           repository: varann/varann
           tag_with_sha: true
 
-      - name: Deploy to Staging server
+      - name: Deploy to virtual machine
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.DEPLOYMENT_HOST }}
           username: ${{ secrets.DEPLOYMENT_USER }}
           key: ${{ secrets.DEPLOYMENT_PEM }}
-          script: docker-compose up
