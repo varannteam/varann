@@ -42,7 +42,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: varann/varann
-          tag_with_sha: true
+          tags: sha-${{ github.sha }}
 
       - name: Deploy to virtual machine
         uses: appleboy/ssh-action@master
