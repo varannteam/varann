@@ -50,4 +50,4 @@ jobs:
           host: ${{ secrets.DEPLOYMENT_HOST }}
           username: ${{ secrets.DEPLOYMENT_USER }}
           key: ${{ secrets.DEPLOYMENT_PEM }}
-          script: rm -f docker-compose.yml && curl -o docker-compose.yml https://raw.githubusercontent.com/varannteam/varann/issue_20/docker-compose.yml && sudo docker-compose up
+          script: sudo docker-compose down && rm -f docker-compose.yml && curl -o docker-compose.yml https://raw.githubusercontent.com/varannteam/varann/issue_20/docker-compose.yml && sudo docker-compose up
