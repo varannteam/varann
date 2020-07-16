@@ -44,13 +44,10 @@ jobs:
           repository: varann/varann
           tag_with_sha: true
 
-      - run: |
-          git config --global user.email "step.ponomarev@gmail.com"
-          git config --global user.name "step-ponomarev"
-          git add -A
-      - uses: akhileshns/heroku-deploy@v3.2.6
+      - name: Deploy to Staging server
+        uses: appleboy/ssh-action@master
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "varann-app"
-          heroku_email: "step.ponomarev@gmail.com"
-          procfile: "web: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - && sudo add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" && sudo apt-get update &&  curl -L \"https://github.com/docker/compose/releases/download/1.26.2/docker-compose-Linux-x86_64\" -o docker-compose && chmod +x docker-compose && ./docker-compose up"
+          host: ${{ secrets.DEPLOYMENT_HOST }}
+          username: ${{ secrets.DEPLOYMENT_USER }}
+          key: ${{ secrets.DEPLOYMENT_PEM }}
+          script: docker-compose up
