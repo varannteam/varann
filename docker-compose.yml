@@ -10,7 +10,7 @@ services:
       - 5432:5432
 
   app:
-    image: "varann/varann:sha-4b5daff"
+    image: "varann/varann:sha-${GITHUB_SHA}"
     ports:
       - 8080:8080
     environment:
