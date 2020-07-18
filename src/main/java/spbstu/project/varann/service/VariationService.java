@@ -16,28 +16,34 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class VariationService {
-  private final VariationRepository repository;
-  private final VcfParser parser;
+    private final VariationRepository repository;
+    private final VcfParser parser;
 
-  public Variation annotate(VariationID variationID) {
-    return repository.findById(variationID).get();
-  }
+    public Variation annotate(VariationID variationID) {
+        return repository.findById(variationID).get();
+    }
 
-  public List<Variation> store(InputStream inputStream) {
-    List<Variation> variations = parser.parse(inputStream)
-        .map(this::toVariation)
-        .collect(Collectors.toList());
+    public List<Variation> annotate(List<VariationID> variationIDS) {
+        return variationIDS.stream()
+                .map(varId -> annotate(varId))
+                .collect(Collectors.toList());
+    }
 
-    return repository.saveAll(variations);
-  }
+    public List<Variation> store(InputStream inputStream) {
+        List<Variation> variations = parser.parse(inputStream)
+                .map(this::toVariation)
+                .collect(Collectors.toList());
 
-  private Variation toVariation(VariantContext variantContext) {
-    return Variation.builder()
-        .chrom(variantContext.getContig())
-        .pos(variantContext.getStart())
-        .ref(variantContext.getReference().getDisplayString())
-        .alt(variantContext.getAlternateAlleles().toString())
-        .info(variantContext.getCommonInfo().getAttributes().toString())
-        .build();
-  }
+        return repository.saveAll(variations);
+    }
+
+    private Variation toVariation(VariantContext variantContext) {
+        return Variation.builder()
+                .chrom(variantContext.getContig())
+                .pos(variantContext.getStart())
+                .ref(variantContext.getReference().getDisplayString())
+                .alt(variantContext.getAlternateAlleles().toString())
+                .info(variantContext.getCommonInfo().getAttributes().toString())
+                .build();
+    }
 }
