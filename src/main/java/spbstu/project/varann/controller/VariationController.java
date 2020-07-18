@@ -37,7 +37,7 @@ public class VariationController {
         return variationService.annotate(variationID);
     }
 
-    @GetMapping
+    @GetMapping("list")
     @PreAuthorize("hasAuthority('ANNOTATE')")
     public ResponseEntity<VariationListDto> annotateVariationList(@RequestBody VariationIdListDto variationIdListDto) {
         try {
