@@ -1,7 +1,6 @@
 name: Varann workflow
 on: [push]
 
-
 jobs:
   build:
     name: Building
@@ -38,6 +37,10 @@ jobs:
           POSTGRES_DB: postgres
           POSTGRES_HOST: localhost
 
+
+      - uses: sfdx-actions/setup-pmd@v1
+      - name: run-pmd
+        run: pmd -d ./src/main/java -R category/apex/design.xml
 
       - name: Build docker image
         uses: docker/build-push-action@v1

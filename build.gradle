@@ -24,6 +24,8 @@ repositories {
 	maven { url 'https://repo.spring.io/milestone' }
 }
 
+
+
 dependencies {
 	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
 	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
@@ -51,7 +53,6 @@ dependencies {
 	}
 
 	testCompile 'junit:junit:4.12'
-
 }
 
 test {
